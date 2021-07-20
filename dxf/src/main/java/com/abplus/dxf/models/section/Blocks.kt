@@ -2,15 +2,16 @@ package com.abplus.dxf.models.section
 
 import com.abplus.dxf.models.Entity
 
-public data class Blocks(
-    val blocks: Map<String, Item> = HashMap(),
-    val names: List<String> = ArrayList()
-) {
+
+public class Blocks {
 
     companion object {
         public const val SECTION_NAME: String = "BLOCKS"
         public const val ENDBLK: String = "ENDBLK"
     }
+
+    val blocks: Map<String, Item> = HashMap()
+    val names: List<String> = ArrayList()
 
     public fun add(block: Item): Item? {
         val name = block.head.name
@@ -41,6 +42,7 @@ public data class Blocks(
         val entities: List<Entity>,
         val tail: Entity
         ) {
+
         val length: Int get() = entities.size
 
         override fun toString(): String {
@@ -50,9 +52,5 @@ public data class Blocks(
             builder.append("${tail}\n")
             return builder.toString()
         }
-    }
-
-    public class Builder() {
-
     }
 }
